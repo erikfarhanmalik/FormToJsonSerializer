@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+	<form id="test-form">
+		<label for="name">First Name</label> 
+		<input type="text" id="firstName" name="firstName" /> <br/> 
+		
+		<label for="name">Last Name</label> 
+		<input type="text" id="lastName" name="lastName" /> <br/> 
+		
+		<label for="school.id">School</label>
+		<select type="text" id="school.id" name="school.id">
+			<option value="1">School 1</option>
+			<option value="2">School 2</option>
+			<option value="3">School 3</option>
+		</select> <br/>
+		
+		<label for="description">Self description</label>
+		<textarea type="text" id="description" name="description"></textarea> <br/>
+	</form>
+
+	<button onclick="serialize()">Serialize()</button>
+	<button onclick="deserialize()">Deserialize()</button>
+</body>
+
+<script type="text/javascript" src="./FormToJsonSerializer.js"></script>
+
+<script type="text/javascript">
+	function serialize() {
+		console.log(serializeFormToJsonString($("#test-form")));
+		$("#test-form")[0].reset();
+	}
+
+	function deserialize() {
+		var staticData = '{"firstName":"Erik","lastName":"Farhan malik","school":{"id":"2"},"description":"Some description about myself"}';
+		deserializeJsonStringToForm(staticData, $("#test-form"));
+	}
+</script>
+</html>
